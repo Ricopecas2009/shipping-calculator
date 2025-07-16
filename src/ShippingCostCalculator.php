@@ -31,7 +31,7 @@ class ShippingCostCalculator
     private string $paymentStatus;
     private string $collectDate;
     private string $serialValue;
-    private object $address;
+    private ?object $address;
 
     private int|float $totalWeight;
     private array $boxList;
@@ -283,7 +283,7 @@ class ShippingCostCalculator
         $url = "http://viacep.com.br/ws/$cep/xml/";
 
         $xml = simplexml_load_file($url);
-        $this->address = $xml;
+        $this->address = $xml !== false ? $xml : null;
     }
 
 
