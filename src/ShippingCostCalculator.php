@@ -89,7 +89,7 @@ class ShippingCostCalculator
         $this->serialValue = $serialValue;
         $this->totalWeight = $totalWeight;
         $this->boxList = $boxList;
-        $this->setAddressByCEP($receiverZipCode);
+        //$this->setAddressByCEP($receiverZipCode);
     }
 
 
