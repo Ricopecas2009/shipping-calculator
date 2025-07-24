@@ -12,6 +12,7 @@ use shippingCalculator\carriers\Movvi;
 use shippingCalculator\carriers\Rodonaves;
 use shippingCalculator\carriers\Tnt;
 use shippingCalculator\carriers\SaoMiguel;
+use shippingCalculator\carriers\TWTransportes;
 
 class ShippingCostCalculator
 {
@@ -324,7 +325,7 @@ class ShippingCostCalculator
     }
 
     /**
-     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => ]
+     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => XXX]
      * @return array
      */
     public function getAtualShippingCost(array $credentials): array
@@ -334,7 +335,7 @@ class ShippingCostCalculator
     }
 
     /**
-     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => ]
+     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => XXX]
      * @return array
      */
     public function getExcellenceShippingCost(array $credentials): array
@@ -350,7 +351,7 @@ class ShippingCostCalculator
     }
 
     /**
-     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => ]
+     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => XXX]
      * @return array
      */
     public function getBauerShippingCost(array $credentials): array
@@ -370,13 +371,23 @@ class ShippingCostCalculator
     }
 
     /**
-     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => ]
+     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => XXX]
      * @return array
      */
     public function getCruzeiroShippingCost(array $credentials): array
     {
         $bauer = new Cruzeiro($this, $credentials, true);
         return $bauer->doRequest();
+    }
+
+    /**
+     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => XXX]
+     * @return array
+     */
+    public function getTWTransportesShippingCost(array $credentials): array
+    {
+        $tw = new TWTransportes($this, $credentials, true);
+        return $tw->doRequest();
     }
 
     public function toArray(): array
