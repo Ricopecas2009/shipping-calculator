@@ -10,7 +10,7 @@ abstract class AbstractSsw extends AbstractCarriers
     public const ENDPOINT = 'https://ssw.inf.br/ws/sswCotacaoColeta/index.php?wsdl';
     protected array $options;
     protected bool $inMeters;
-    protected int $commodity = 1;
+    protected int $mercadoria = 1;
 
     public function __construct(ShippingCostCalculator $shipping, array $credentials, bool $inMeters = false)
     {
@@ -62,7 +62,7 @@ abstract class AbstractSsw extends AbstractCarriers
                 $this->shipping->getNumTotalBoxes(),
                 $this->shipping->getTotalWeight(),
                 $this->inMeters ? $this->shipping->getTotalVolumeInMeters() : $this->shipping->getTotalVolume(),
-                $this->commodity,
+                $this->mercadoria,
                 "C",
                 $this->shipping->getSenderCNPJ(),
                 $this->shipping->getReceiverIdentification(),
@@ -84,7 +84,11 @@ abstract class AbstractSsw extends AbstractCarriers
         } catch (\Exception $e) {
             $this->response->exception = $e->getMessage();
         }
-
         return $this->response->toArray();
     }
+
+    public function setMercadoria(int $newMercadoriaValue):void
+    {
+        $this->mercadoria = $newMercadoriaValue;
+    }   
 }

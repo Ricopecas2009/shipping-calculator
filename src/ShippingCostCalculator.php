@@ -384,9 +384,10 @@ class ShippingCostCalculator
      * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => XXX]
      * @return array
      */
-    public function getTWTransportesShippingCost(array $credentials): array
+    public function getTWTransportesShippingCost(array $credentials, int $newMercadoriaValue): array
     {
         $tw = new TWTransportes($this, $credentials, true);
+        $tw->setMercadoria($newMercadoriaValue);
         return $tw->doRequest();
     }
 
