@@ -13,6 +13,7 @@ use shippingCalculator\carriers\Rodonaves;
 use shippingCalculator\carriers\Tnt;
 use shippingCalculator\carriers\SaoMiguel;
 use shippingCalculator\carriers\TWTransportes;
+use shippingCalculator\carriers\MVXTransportes;
 
 class ShippingCostCalculator
 {
@@ -387,6 +388,17 @@ class ShippingCostCalculator
     public function getTWTransportesShippingCost(array $credentials, int $newMercadoriaValue=1): array
     {
         $tw = new TWTransportes($this, $credentials, true);
+        $tw->setMercadoria($newMercadoriaValue);
+        return $tw->doRequest();
+    }
+
+    /**
+     * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => XXX]
+     * @return array
+     */
+    public function getMVXransportesShippingCost(array $credentials, int $newMercadoriaValue=1): array
+    {
+        $tw = new MVXTransportes($this, $credentials, true);
         $tw->setMercadoria($newMercadoriaValue);
         return $tw->doRequest();
     }
