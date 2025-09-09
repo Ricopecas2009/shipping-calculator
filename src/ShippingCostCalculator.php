@@ -396,11 +396,11 @@ class ShippingCostCalculator
      * @param array $credentials ["login" => xxxxx, "password" => xxxxx, "domain" => XXX]
      * @return array
      */
-    public function getMVXransportesShippingCost(array $credentials, int $newMercadoriaValue=1): array
+    public function getMVXTransportesShippingCost(array $credentials, int $newMercadoriaValue=1): array
     {
-        $tw = new MVXTransportes($this, $credentials, true);
-        $tw->setMercadoria($newMercadoriaValue);
-        return $tw->doRequest();
+        $mvx = new MVXTransportes($this, $credentials, true);
+        $mvx->setMercadoria($newMercadoriaValue);
+        return $mvx->doRequest();
     }
 
     public function toArray(): array
