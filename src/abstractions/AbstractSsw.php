@@ -73,7 +73,7 @@ abstract class AbstractSsw extends AbstractCarriers
             $sswQuotation = (array)simplexml_load_string($xml);
 
             if (isset($sswQuotation['mensagem']) && $sswQuotation['mensagem'] != "OK") throw new \Exception($sswQuotation['mensagem']);
-            if (empty($sswQuotation['prazo'])&&empty($sswQuotation['frete'])) throw new \Exception("Prazo não retornado");
+            //if (empty($sswQuotation['prazo'])) throw new \Exception("Prazo não retornado");
             if (empty($sswQuotation['frete'])) throw new \Exception("Valor do frete não retornado");
 
             $this->response->tempo_previsto = $sswQuotation['prazo'];
